@@ -1,69 +1,80 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
-    kotlin("jvm") version "1.3.60" // calls deprecated gradle DefaultPolymorphicDomainObjectContainer
+    kotlin("jvm") version "1.3.60" apply false // calls deprecated gradle DefaultPolymorphicDomainObjectContainer
     id("org.unbroken-dome.test-sets") version "2.2.1"
 }
 
-repositories {
-    mavenCentral()
-}
+allprojects {
+    group = "de.richargh.sandbox.testsets"
+    version = "1.0.0"
 
-testSets {
-    val testShared by libraries.creating {
-
+    repositories {
+        mavenCentral()
     }
 
-    val unitTest by getting {
-        imports(testShared)
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            freeCompilerArgs = listOf("-Xjsr305=strict")
+            jvmTarget = "1.8"
+        }
     }
-    val mediumTest by creating {
-        println("Medium Testset")
-        imports(testShared)
 
+
+
+
+
+
+}
+
+subprojects {
+
+    apply {
+        plugin("org.unbroken-dome.test-sets")
     }
-    create("largeTest") {
-        println("Large Testset")
-        imports(testShared)
+
+    testSets {
+        val testShared by  libraries.creating {
+
+        }
+
+        val unitTest by getting {
+            imports(testShared)
+        }
+        val mediumTest by creating {
+            println("Medium Testset")
+            imports(testShared)
+
+        }
+        create("largeTest") {
+            println("Large Testset")
+            imports(testShared)
+        }
+    }
+
+    tasks.withType<Test> {
+        useJUnitPlatform {
+            includeTags("fail")
+        }
+        this.failFast = false
+    }
+
+    tasks.getByName<Test>("mediumTest") {
+        println("reconfigure mediumTest")
+        mustRunAfter(tasks["test"])
+    }
+
+    tasks.getByName<Test>("largeTest") {
+        println("reconfigure largeTest")
+        mustRunAfter(tasks["mediumTest"])
+    }
+
+    tasks.getByName("check") {
+        dependsOn("mediumTest")
+        dependsOn("largeTest")
     }
 }
 
-val testShared by configurations.getting
-
-dependencies {
-    /** Project dependencies **/
-    // none
-
-    /** Language dependencies **/
-    implementation(kotlin("stdlib-jdk8"))
-
-    /** Main dependencies **/
-    // none
-
-    /** Test dependencies **/
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.2")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.2")
-
-    testShared("org.junit.jupiter:junit-jupiter-api:5.5.2")
-
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform {
-        includeTags("fail")
-    }
-    this.failFast = false
-}
-
-tasks.getByName<Test>("mediumTest") {
-    println("reconfigure mediumTest")
-    mustRunAfter(tasks["test"])
-}
-
-tasks.getByName<Test>("largeTest") {
-    println("reconfigure largeTest")
-    mustRunAfter(tasks["mediumTest"])
-}
-
-tasks.getByName("check"){
-    dependsOn("mediumTest")
-    dependsOn("largeTest")
+tasks.wrapper {
+    gradleVersion = "6.0.1"
 }

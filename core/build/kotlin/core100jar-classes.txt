@@ -1,0 +1,1 @@
+/Users/richardg/Documents/GIT/SANDBOX/integration-test-krdl-kt/core/build/classes/kotlin/main/de/richargh/sandbox/spring/multibuild/DomainObject.class
