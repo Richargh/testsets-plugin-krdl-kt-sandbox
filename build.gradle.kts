@@ -36,18 +36,11 @@ subprojects {
         val mediumTest by creating {
             println("Medium Testset")
             imports(testShared)
-
         }
         create("largeTest") {
             println("Large Testset")
             imports(testShared)
         }
-    }
-
-    dependencies {
-        // without this the standard library is not known
-        "testSharedImplementation"(kotlin("stdlib-jdk8"))
-        "testSharedImplementation"("org.junit.jupiter:junit-jupiter-api:5.5.2")
     }
 
     tasks.withType<Test> {
