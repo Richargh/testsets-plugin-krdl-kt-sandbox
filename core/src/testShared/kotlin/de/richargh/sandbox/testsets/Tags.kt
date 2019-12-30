@@ -1,4 +1,4 @@
-package de.richargh.sandbox.spring.multibuild.catalogue
+package de.richargh.sandbox.testsets
 
 const val willSucceed = "willSucceed"
 const val mightFail = "mightFail"

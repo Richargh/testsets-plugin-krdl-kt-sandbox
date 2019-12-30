@@ -1,6 +1,5 @@
-package de.richargh.sandbox.spring.multibuild.catalogue
+package de.richargh.sandbox.testsets
 
-import de.richargh.sandbox.spring.multibuild.DomainObject
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test

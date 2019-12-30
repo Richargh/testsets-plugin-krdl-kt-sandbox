@@ -1,16 +1,15 @@
-package de.richargh.sandbox.spring.multibuild.catalogue
+package de.richargh.sandbox.testsets
 
-import de.richargh.sandbox.spring.multibuild.DomainObject
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 
-class SucceedSmallTest {
+class SucceedMediumTest {
 
     @Tag(willSucceed)
     @Test
-    fun `tests that a succeeding small test is counted`() {
-        /// arrange, tests if main and testShared can be linked
+    fun `tests that a succeeding medium test is counted`() {
+        // arrange, tests if main and testShared can be linked
         val domainObject: DomainObject = DomainObjectBuilder().build()
 
         // act
@@ -18,4 +17,5 @@ class SucceedSmallTest {
         // assert
         assertEquals("expected", "expected")
     }
+
 }
