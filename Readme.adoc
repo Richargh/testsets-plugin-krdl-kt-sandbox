@@ -1,0 +1,16 @@
+= Testsets Gradle Library Sandbox
+
+We play around with the link:https://github.com/unbroken-dome/gradle-testsets-plugin[Gradle TestSets plugin]. Does not have any business logic to speak of but features lots of dependencies between the testsets.
+
+*Features*
+
+* Multi-project
+* Small, Medium, Large Testsets
+* Shared Test library
+* Tagged and disabled tests
+
+== Usage
+
+Build and run all tests: `./gradlew build`
+
+Play around by enabling, disabling or changing tags of tests.
