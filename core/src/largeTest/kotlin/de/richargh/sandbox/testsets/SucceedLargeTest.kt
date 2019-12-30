@@ -13,9 +13,10 @@ class SucceedLargeTest {
         val domainObject: DomainObject = DomainObjectBuilder().build()
 
         // act
+        val actual = domainObject.sayHello()
 
         // assert
-        assertEquals("expected", "expected")
+        assertEquals(actual, "Hello World")
     }
 
 }

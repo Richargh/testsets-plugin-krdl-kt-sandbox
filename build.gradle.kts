@@ -19,12 +19,6 @@ allprojects {
             jvmTarget = "1.8"
         }
     }
-
-
-
-
-
-
 }
 
 subprojects {
@@ -34,8 +28,11 @@ subprojects {
     }
 
     testSets {
-        val testShared by  libraries.creating {
-
+        val testShared by libraries.creating {
+            dependencies {
+                // without this the standard library is not known
+                "testSharedImplementation"(kotlin("stdlib-jdk8"))
+            }
         }
 
         val unitTest by getting {
@@ -54,7 +51,7 @@ subprojects {
 
     tasks.withType<Test> {
         useJUnitPlatform {
-            includeTags("fail")
+            includeTags("willSucceed", "mightFail")
         }
         this.failFast = false
     }

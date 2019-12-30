@@ -1,3 +1,5 @@
 package de.richargh.sandbox.testsets
 
-class DomainObject
+class DomainObject(private val word: String){
+    fun sayHello() = "Hello $word"
+}
