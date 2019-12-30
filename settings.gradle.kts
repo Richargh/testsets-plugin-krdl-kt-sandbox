@@ -1,3 +1,3 @@
-rootProject.name = "testset-multi"
+rootProject.name = "testsets-plugin-sandbox"
 
 include("core")
