@@ -28,12 +28,7 @@ subprojects {
     }
 
     testSets {
-        val testShared by libraries.creating {
-            dependencies {
-                // without this the standard library is not known
-                "testSharedImplementation"(kotlin("stdlib-jdk8"))
-            }
-        }
+        val testShared by libraries.creating { }
 
         val unitTest by getting {
             imports(testShared)
@@ -47,6 +42,12 @@ subprojects {
             println("Large Testset")
             imports(testShared)
         }
+    }
+
+    dependencies {
+        // without this the standard library is not known
+        "testSharedImplementation"(kotlin("stdlib-jdk8"))
+        "testSharedImplementation"("org.junit.jupiter:junit-jupiter-api:5.5.2")
     }
 
     tasks.withType<Test> {
