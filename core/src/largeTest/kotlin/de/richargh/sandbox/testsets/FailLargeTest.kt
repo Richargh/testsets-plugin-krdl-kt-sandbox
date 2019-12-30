@@ -7,12 +7,12 @@ import org.junit.jupiter.api.fail
 
 class FailLargeTest {
 
+    // tests whether disabled annotation is interpreted, if not this test fails the build
     @Disabled
     @Tag(mightFail)
     @Test
     fun `tests that a failing large test is recognized`() {
-        // arrange, tests if main and testShared can be linked
-        val domainObject: DomainObject = DomainObjectBuilder().build()
+        // arrange
 
         // act
 

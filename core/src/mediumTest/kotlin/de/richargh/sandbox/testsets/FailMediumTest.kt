@@ -7,12 +7,12 @@ import org.junit.jupiter.api.fail
 
 class FailMediumTest {
 
+    // tests whether disabled annotation is interpreted, if not this test fails the build
     @Disabled
     @Tag(mightFail)
     @Test
     fun `tests that a failing medium test is recognized`() {
-        // arrange, tests if main and testShared can be linked
-        val domainObject: DomainObject = DomainObjectBuilder().build()
+        // arrange
 
         // act
 
