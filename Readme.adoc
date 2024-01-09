@@ -1,11 +1,11 @@
 = Testsets Gradle Library Sandbox
 
-We play around with the link:https://github.com/unbroken-dome/gradle-testsets-plugin[Gradle TestSets plugin]. Does not have any business logic to speak of but features lots of dependencies between the testsets.
+We play around with the community link:https://github.com/unbroken-dome/gradle-testsets-plugin[Gradle TestSets plugin]. Does not have any business logic to speak of but features lots of dependencies between the testsets. If you want to use the official Test Suite plugin you can take a look at this link:https://github.com/Richargh/testsuite-plugin-krdl-kt-sandbox[Repository] instead.
 
 *Features*
 
 * Multi-project
-* Small, Medium, Large Testsets
+* Small, Medium, Large Testsets via link:https://github.com/unbroken-dome/gradle-testsets-plugin[community testset plugin]
 * Shared Test library
 * Tagged and disabled tests
 
